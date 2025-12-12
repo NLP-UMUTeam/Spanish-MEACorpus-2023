@@ -36,9 +36,7 @@ In human–computer interaction, emotion recognition provides a deeper understan
 To request the dataset for academic purposes, please fill this form:
 https://forms.gle/M668aLqHEuA4Qp1k7
 
-
 #### Dataset statistics
-
 The table below summarizes the structure of the Spanish MEACorpus 2023 dataset. The corpus contains a total of 5,129 emotionally annotated speech segments, distributed into training and test splits following speaker-independent criteria. Emotion categories show natural imbalance—particularly for fear—reflecting realistic emotional distributions in spontaneous speech. The corpus includes more than 790 minutes of labeled audio, with an average segment duration of approximately 9.2 seconds across all emotion classes.
 
 | Emotion  | Train | Test | Total | Total Length (min) | Avg Length (s) |
@@ -50,6 +48,30 @@ The table below summarizes the structure of the Spanish MEACorpus 2023 dataset. 
 | neutral  | 1600  | 399  | 1999  | 312.66             | 9.38            |
 | sadness  |  465  | 117  |  582  |  89.38             | 9.21            |
 | **Total**| **4102** | **1027** | **5129** | **790.08** | **9.24** |
+
+
+### System architecture
+
+The method proposed in this work can be described as the following Figure. 
+![Descripción](spanish-mea-corpus-architecture.png)
+
+In a nutshell, it can de described as follows: first, we compile and annotate the Spanish MEACorpus 2023, a novel multimodal dataset, with different audio segments from YouTube. Then, the video preprocessing module is responsible for cleaning the video, extracting its audio and converting it to text. Next, this dataset is organized into training and testing with a ratio of 80\%-20\%. The former will be used in the training phase and the latter in the evaluation phase. In the feature extraction stage, the training dataset is processed to harvest the most discriminative features of each added sample to train the designed DL architectures. Finally, during the classification phase, we use the test dataset to evaluate the various approaches we have proposed. These include fine-tuning pre-trained text models and pre-trained audio models for ER, as well as testing different fusion approaches for the multimodal model.
+
+
+### Evaluation
+#### Multimodal Classification Results
+The table below presents the performance of several multimodal strategies combining audio and text representations. Among the evaluated methods, Late Fusion with embedding concatenation (LF–concat) achieves the best overall performance, obtaining the highest F1-scores for most individual emotions as well as the top macro-F1 (87.75) and weighted-F1 (90.06) results. Ensemble Learning approaches achieve competitive outcomes—particularly for disgust—while the attention-based fusion model underperforms, especially for minority classes such as fear. These results suggest that, for MEACorpus 2023, simple yet expressive fusion strategies outperform more complex attention-based architectures, likely due to class imbalance and the small size of certain emotional categories.
+
+| Emotion | LF (concat) | LF (mean) | Fusion + Attn | EL (mean) | EL (max) |
+|---------|------------:|----------:|--------------:|----------:|---------:|
+| Anger   | **79.699**  | 77.953    | 77.818        | 76.404    | 75.445   |
+| Disgust | 87.967      | 87.190    | 85.892        | **88.211**| 85.288   |
+| Fear    | **88.889**  | 75.000    | 36.364        | 82.353    | 80.000   |
+| Joy     | **85.714**  | 84.758    | 82.591        | 82.787    | 83.534   |
+| Neutral | **97.107**  | 95.443    | 96.139        | 96.059    | 96.287   |
+| Sadness | **87.097**  | 84.647    | 80.508        | 83.784    | 86.344   |
+| **M-F1**| **87.745**  | 84.165    | 76.552        | 84.933    | 84.483   |
+| **W-F1**| **90.064**  | 88.501    | 87.406        | 88.488    | 88.136   |
 
 
 ### Acknowledgments
