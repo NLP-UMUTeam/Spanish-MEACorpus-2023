@@ -16,7 +16,7 @@
 - **José Antonio García-Díaz** — University of Murcia  
   [Google Scholar](https://scholar.google.com/citations?user=ek7NIYUAAAAJ) · [ORCID](https://orcid.org/0000-0002-3651-2660)
 
-- **Miguel Ángel Rodríguez-García** — UNED - Madrid
+- **Miguel Ángel Rodríguez-García** — UNED
   [Google Scholar](https://scholar.google.com/citations?user=Rn1YH4cAAAAJ&hl=en) · [ORCID](https://orcid.org/0000-0001-6244-6532)
 
 - **Rafael Valencia-García** — University of Murcia  
