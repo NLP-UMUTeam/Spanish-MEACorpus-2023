@@ -1,5 +1,12 @@
 # Spanish MEACorpus 2023
 ## A multi-modal speech-text corpus for emotion analysis in Spanish from natural environments
+[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.18246241.svg)](https://doi.org/10.5281/zenodo.18246241)
+
+Spanish-MEACorpus-2023 is a multimodal Spanish corpus for emotion analysis constructed from YouTube videos.
+The dataset combines speech-derived transcriptions, temporal segmentation information, and emotion annotations, enabling research on multimodal and speech-based emotion analysis in Spanish.
+
+The corpus was introduced in the associated scientific publication and is released following the FAIR data principles to facilitate reproducibility and reuse.
+
 
 ### Highlights
 - Multimodal corpus for Emotion Recognition in Spanish in natural environments.
@@ -33,6 +40,21 @@ https://www.sciencedirect.com/science/article/pii/S0920548924000254
 In human–computer interaction, emotion recognition provides a deeper understanding of the user’s emotions, enabling empathetic and effective responses based on the user’s emotional state. While deep learning models have improved emotion recognition solutions, it is still an active area of research. One important limitation is that most emotion recognition systems use only text as input, ignoring features such as voice intonation. Another limitation is the limited number of datasets available for multimodal emotion recognition. In addition, most published datasets contain emotions that are simulated by professionals and produce limited results in real-world scenarios. In other languages, such as Spanish, hardly any datasets are available. Therefore, our contributions to emotion recognition are as follows. First, we compile and annotate a new corpus for multimodal emotion recognition in Spanish (Spanish MEACorpus 2023), which contains 13.16 h of speech divided into 5129 segments labeled by considering Ekman’s six basic emotions. The dataset is extracted from YouTube videos in natural environments. Second, we explore several deep learning models for emotion recognition using text- and audio-based features. Third, we evaluate different multimodal techniques to build a multimodal recognition system that improves the results of unimodal models, achieving a Macro F1-score of 87.745%, using late fusion with concatenation strategy approach.
 
 ### Dataset
+Each instance in the dataset corresponds to a speech segment extracted from a YouTube video.
+The public dataset is provided as a single CSV file:
+- `output/dataset.csv`
+
+This file contains metadata, annotations, temporal segmentation boundaries, and transcriptions for each segment.
+Due to copyright restrictions, audio and video files are not redistributed.
+Instead, each instance includes a YouTube video identifier and temporal boundaries, enabling rehydration of the original multimedia content.
+
+The repository provides code to automatically download and segment the original videos from YouTube using the provided identifiers and timestamps.
+
+The repository includes scripts to automatically download and segment the original YouTube videos used to construct the dataset.
+
+In particular, the script `code/download-dataset.py` allows reproducing the audio and video segmentation process using the identifiers and temporal boundaries provided in the dataset.
+
+
 To request the dataset for academic purposes, please fill this form:
 https://forms.gle/M668aLqHEuA4Qp1k7
 
@@ -48,6 +70,28 @@ The table below summarizes the structure of the Spanish MEACorpus 2023 dataset. 
 | neutral  | 1600  | 399  | 1999  | 312.66             | 9.38            |
 | sadness  |  465  | 117  |  582  |  89.38             | 9.21            |
 | **Total**| **4102** | **1027** | **5129** | **790.08** | **9.24** |
+
+
+#### Data fields
+
+The public dataset includes the following fields:
+
+- `youtube_key`: YouTube video identifier.
+- `segment_id`: Identifier of the speech segment.
+- `label`: Emotion label assigned to the segment.
+- `gender`: Gender of the speaker.
+- `start_time`: Start time of the segment (in milliseconds).
+- `end_time`: End time of the segment (in milliseconds).
+- `transcription`: Text transcription of the speech segment.
+- `split`: Data split (train/test).
+
+
+#### FAIR data and self-assessment
+This dataset has been curated following the FAIR (Findable, Accessible, Interoperable, Reusable) data principles.
+
+A FAIR self-assessment has been conducted using the FAIR Data Self-Assessment Tool (FAISS), documenting the use of persistent identifiers, standard metadata, clear access conditions, and detailed provenance information.
+
+The dataset is publicly available through Zenodo and GitHub and is intended for long-term reuse in research on multimodal emotion analysis.
 
 
 ### System architecture
@@ -78,6 +122,13 @@ The table below presents the performance of several multimodal strategies combin
 This work is part of the research projects **LaTe4PoliticES (PID2022-138099OB-I00)** funded by *MCIN/AEI/10.13039/501100011033* and the *European Fund for Regional Development (FEDER)-a way to make Europe* and **LT-SWM (TED2021-131167B-I00)** funded by *MCIN/AEI/10.13039/501100011033* and by the *European Union NextGenerationEU/PRTR*. In addition, this work has been also funded by **``Programa para la Recualificación del Sistema Universitario Español 2021-2023''**, and the *Community of Madrid*, through the **Young Researchers R+D Project. Ref. M2173 – SGTRS** (co-funded by *Rey Juan Carlos University*) and **PEJD-2019-PRE/TIC-16151**.
 
 
+## Licence
+The dataset annotations, transcriptions, and metadata are distributed under the Creative Commons Attribution-NonCommercial 4.0 International (CC BY-NC 4.0) licence.
+
+Audio and video content remain subject to YouTube’s Terms of Service and the original content creators’ rights.
+
+
+
 ### Citation
 ```
 @article{pan2024spanish,
@@ -90,4 +141,15 @@ This work is part of the research projects **LaTe4PoliticES (PID2022-138099OB-I0
   publisher={Elsevier}
 }
 ```
+
+or cite the Zenodo dataset
+```
+If you use this dataset, please cite the Zenodo record:
+
+García-Díaz, J. A. et al. (2026).
+Spanish-MEACorpus-2023: A Multimodal Spanish Corpus for Emotion Analysis from YouTube.
+Zenodo. https://doi.org/10.5281/zenodo.18246241
+```
+
+
 
