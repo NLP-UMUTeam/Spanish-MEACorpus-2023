@@ -1,6 +1,6 @@
 # Spanish MEACorpus 2023
 ## A multi-modal speech-text corpus for emotion analysis in Spanish from natural environments
-[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.18246241.svg)](https://doi.org/10.5281/zenodo.18246241)
+[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.18606423.svg)](https://doi.org/10.5281/zenodo.18606423)
 
 Spanish-MEACorpus-2023 is a multimodal Spanish corpus for emotion analysis constructed from YouTube videos.
 The dataset combines speech-derived transcriptions, temporal segmentation information, and emotion annotations, enabling research on multimodal and speech-based emotion analysis in Spanish.
@@ -42,7 +42,7 @@ In human–computer interaction, emotion recognition provides a deeper understan
 ### Dataset
 Each instance in the dataset corresponds to a speech segment extracted from a YouTube video.
 The public dataset is provided as a single CSV file:
-- `output/dataset.csv`
+- `output/spanish-meacorpus-2023-dataset.csv`
 
 This file contains metadata, annotations, temporal segmentation boundaries, and transcriptions for each segment.
 Due to copyright restrictions, audio and video files are not redistributed.
